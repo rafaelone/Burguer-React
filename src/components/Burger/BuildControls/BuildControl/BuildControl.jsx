@@ -1,12 +1,12 @@
-import react from 'react'
-import './buildControl.css'
-const buildControl = props => (
+import React from 'react'
+import './BuildControl.css'
+const buildControl = ({added, label}) => (
   <div className="buildControl">
     <div className="label">
-      {props.label}
+      {label}
     </div>
     <button className="less">-</button>
-    <button className="more">+</button>
+    <button className="more" onClick={added}>+</button>
   </div>
 )
 
