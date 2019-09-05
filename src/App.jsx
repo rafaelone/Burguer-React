@@ -8,7 +8,7 @@ import Orders from './containers/Orders/Orders';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div style={{height: '100%'}}>
         <Layout>
           <Switch>
             <Route path="/checkout" component={Checkout} />
