@@ -3,15 +3,15 @@ import './Input.css';
 
 const input = (props) => {
   let inputElement = null;
-  switch (props.inputyype) {
+  switch (props.elementType) {
     case 'input':
-      inputElement = <input className="inputElement" {...props} />;
+      inputElement = <input className="inputElement" {...props.elementConfig} value={props.value} />;
       break;
     case 'textarea':
-      inputElement = <textarea className="inputElement" {...props} />;
+      inputElement = <textarea className="inputElement" {...props.elementConfig} value={props.value} />;
       break;
     default:
-      inputElement = <input className="inputElement" {...props} />;
+      inputElement = <input className="inputElement" {...props.elementConfig} value={props.value} />;
   }
   return (
     <div className="input">
