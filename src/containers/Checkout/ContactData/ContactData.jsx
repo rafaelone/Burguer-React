@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../../../components/UI/Button/Button';
 import axios from '../../../Axios-orders'
 import Spinner from '../../../components/UI/Spinner/Spinner'
+import Input from '../../../components/UI/Input/Input'
 import './ContactData.css';
 import Auxi from '../../../hoc/Auxi';
 
@@ -52,10 +53,10 @@ class ContactData extends Component {
     let form = (
       <Auxi>
         <form>
-          <input className="input" type="text" name="name" id="name" placeholder="Your Name" />
-          <input className="input" type="email" name="email" id="email" placeholder="Your Email" />
-          <input className="input" type="text" name="street" id="street" placeholder="Your Street" />
-          <input className="input" type="text" name="postal" id="postal" placeholder="Your Postal Code" />
+          <Input inputtype="input" type="text" name="name" id="name" placeholder="Your Name" />
+          <Input inputtype="input" type="email" name="email" id="email" placeholder="Your Email" />
+          <Input inputtype="input" type="text" name="street" id="street" placeholder="Your Street" />
+          <Input inputtype="input" type="text" name="postal" id="postal" placeholder="Your Postal Code" />
         </form>
         <Button btnType="success" clicked={this.orderHandler}>ORDER</Button>
       </Auxi>

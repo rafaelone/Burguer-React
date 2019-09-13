@@ -1,10 +1,10 @@
 import React from 'react';
 import Burger from '../../Burger/Burger';
 import Button from '../../UI/Button/Button';
-import './CheckoutSummary';
+import './CheckoutSummary.css';
 
 const checkoutSummary = ({ ingredients, checkoutCancelled, checkoutContinued }) => (
-  <div className="">
+  <div className="checkoutSummary">
     <h1>We hope it tastes well!!</h1>
     <div style={{
       width: '100%',
