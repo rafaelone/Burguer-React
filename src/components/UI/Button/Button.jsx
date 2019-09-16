@@ -1,10 +1,15 @@
-import React from 'react'
+import React from 'react';
 import './Button.css';
 
-const button = props => (
+const button = (props) => (
   <button
+    type="button"
     className={['button', props.btnType].join(' ')}
-    onClick={props.clicked}>{props.children}</button>
-)
+    disabled={props.disabled}
+    onClick={props.clicked}
+  >
+    {props.children}
+  </button>
+);
 
-export default button
+export default button;
