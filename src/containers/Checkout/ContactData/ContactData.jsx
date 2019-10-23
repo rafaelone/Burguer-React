@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect} from 'react-redux'
 import Button from '../../../components/UI/Button/Button';
 import axios from '../../../Axios-orders'
 import Spinner from '../../../components/UI/Spinner/Spinner'
@@ -96,17 +97,18 @@ class ContactData extends Component {
   orderHandler = event => {
     console.log("qual é")
     event.preventDefault();
-    const { ingredients } = this.props;
+    const { ings, price } = this.props;
     this.setState({ loading: true })
     const formData = {}
     for (let  formElementIdentifier in this.state.orderForm){
       formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
     }
     const order = {
-      Ingredients: ingredients,
-      price: this.props.price,
+      Ingredients: ings,
+      price: price,
       orderData: formData
     }
+    console.log(order)
     axios.post('/orders.json', order)
       .then(response => {
         this.setState({ loading: false })
@@ -169,7 +171,7 @@ class ContactData extends Component {
     }
     let form = (
       <Auxi>
-        <form onSubmit={this.orderHandler}>
+        <form >
           {formElementsArray.map(formElement => (
             <Input 
               invalid={!formElement.config.valid}
@@ -182,7 +184,7 @@ class ContactData extends Component {
               shouldValidate={formElement.config.validation}
             />
           ))}
-          <Button btnType="success" disabled={!this.state.formIsValid}>ORDER</Button>
+          <Button btnType="success" disabled={!this.state.formIsValid} clicked={this.orderHandler}>ORDER</Button>
         </form>
         
       </Auxi>
@@ -200,4 +202,12 @@ class ContactData extends Component {
   }
 }
 
-export default ContactData;
+const mapStateToProps = state => {
+  return {
+    ings: state.ingredients,
+    price: state.totalPrice
+  }
+}
+
+
+export default connect(mapStateToProps)(ContactData);
