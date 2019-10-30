@@ -1,32 +1,40 @@
-import React from 'react'
+import React from 'react';
 import BuildControl from './BuildControl/BuildControl';
-import './BuildControls.css'
+import './BuildControls.css';
 
 const controls = [
-  { label: 'Salad', type: 'salad'},
-  { label: 'Bacon', type: 'bacon'},
-  { label: 'Cheese', type: 'cheese'},
-  { label: 'Meat', type: 'meat'}
-]
+  { label: 'Salad', type: 'salad' },
+  { label: 'Bacon', type: 'bacon' },
+  { label: 'Cheese', type: 'cheese' },
+  { label: 'Meat', type: 'meat' },
+];
 
-const buildControls = props => (
+const buildControls = (props) => (
   <div className="buildControls">
-    <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
-    {controls.map(ctrl => (
-      <BuildControl 
-        key={ctrl.label} 
+    <p>
+Current Price:
+      {' '}
+      <strong>{props.price.toFixed(2)}</strong>
+    </p>
+    {controls.map((ctrl) => (
+      <BuildControl
+        key={ctrl.label}
         label={ctrl.label}
         added={() => props.ingredientAdded(ctrl.type)}
         removed={() => props.ingredientRemoved(ctrl.type)}
         disabled={props.disabled[ctrl.type]}
-        />
-      ))}
-      <button type="submit" 
-        className="orderButton"
-        disabled={!props.purchasable}
-        onClick={props.ordered}
-        >ORDER NOW</button>
-  </div>
-)
+      />
+    ))}
+    <button
+      type="submit"
+      className="orderButton"
+      disabled={!props.purchasable}
+      onClick={props.ordered}
+    >
+ORDER NOW
 
-export default buildControls
+    </button>
+  </div>
+);
+
+export default buildControls;

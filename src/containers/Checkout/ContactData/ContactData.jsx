@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect} from 'react-redux'
 import Button from '../../../components/UI/Button/Button';
-import axios from '../../../Axios-orders'
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input'
 import './ContactData.css';
 import Auxi from '../../../hoc/Auxi';
+import axios from '../../../Axios-orders'
+import withErrorHandler from '../../../hoc/withErrorHandler'
 
 class ContactData extends Component {
   state = {
@@ -95,10 +96,8 @@ class ContactData extends Component {
     };
 
   orderHandler = event => {
-    console.log("qual é")
     event.preventDefault();
     const { ings, price } = this.props;
-    this.setState({ loading: true })
     const formData = {}
     for (let  formElementIdentifier in this.state.orderForm){
       formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
@@ -108,16 +107,8 @@ class ContactData extends Component {
       price: price,
       orderData: formData
     }
-    console.log(order)
-    axios.post('/orders.json', order)
-      .then(response => {
-        this.setState({ loading: false })
-        console.log(this.props)
-        this.props.history.push('/')
-      })
-      .catch(error => {
-        this.setState({ loading: false })
-      })
+    
+   
   }
 
   checkValidaty(value, rules){
@@ -210,4 +201,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(ContactData);
+export default connect(mapStateToProps)(withErrorHandler(ContactData, axios));
