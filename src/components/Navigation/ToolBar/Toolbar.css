@@ -11,15 +11,11 @@
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 90;
+  overflow: hidden;
 }
 
-.toolbar nav {
-  height: 100%;
-}
 
-.logo {
-  height: 80%;
-}
+
 
 @media (max-width: 499px){
   .desktopOnly {
