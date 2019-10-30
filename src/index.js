@@ -18,6 +18,7 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose;
 
 const store = createStore(burguerBuilderReducer, composeEnhancer(
   applyMiddleware(thunk),
+  devTools,
 ));
 
 const app = (
