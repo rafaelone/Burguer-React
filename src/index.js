@@ -14,6 +14,7 @@ import * as serviceWorker from './serviceWorker';
 
 import burguerBuilderReducer from './store/reducers/burgerBuilder';
 import orderReducer from './store/reducers/order';
+import authReducer from './store/reducers/auth';
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
@@ -22,6 +23,7 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose;
 const rootReducer = combineReducers({
   burguerBuilder: burguerBuilderReducer,
   order: orderReducer,
+  auth: authReducer,
 });
 
 const store = createStore(rootReducer, composeEnhancer(
