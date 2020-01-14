@@ -41,6 +41,7 @@ class Auth extends Component {
           touched: false,
         },
       },
+      isSignup: true
     };
 
     this.checkValidaty = this.checkValidaty.bind(this)
@@ -85,13 +86,18 @@ class Auth extends Component {
 
   submitHandler = (event) => {
     event.preventDefault()
-    console.log('oi')
-    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
+    
+    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup)
+  }
+
+  switchAuthModeHandler = () => {
+    this.setState(prevState => {
+      return { isSignup: !prevState.isSignup}
+    })
   }
 
   render() {
     const formElementsArray = [];
-    console.log(this.state.controls);
     for (const key in this.state.controls) {
       formElementsArray.push({
         id: key,
@@ -121,14 +127,21 @@ class Auth extends Component {
           <Button btnType="success" clicked={this.submitHandler}>
             SUBMIT
           </Button>
-        </form>
+          
+    </form>
+    <Button 
+      btnType="danger"
+      clicked={this.switchAuthModeHandler}
+      >
+        SWITCH TO {this.state.isSignup ? 'SIGNIN' : 'SIGNUP'}
+      </Button>
       </div>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onAuth: (email, password) => dispatch(actions.auth(email, password))
+  onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password,isSignup))
 })
 
 export default connect(null, mapDispatchToProps)(Auth);
