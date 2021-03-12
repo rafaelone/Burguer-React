@@ -44,6 +44,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "react-dev-utils": "^9.1.0"
+    "react-dev-utils": "^11.0.4"
   }
 }
